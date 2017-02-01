@@ -37,12 +37,18 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
 <ul class="posts">
-{% for post in site.tags.sparks limit: 20 %}
-  <div class="post_info">
-    <li>
-         <a href="{{ post.url }}">{{ post.title }}</a>
-         <span>({{ post.date | date:"%Y-%m-%d" }})</span>
-    </li>
-    </div>
-  {% endfor %}
+{% assign count = 0 %}
+{% for post in site.posts %}
+  {% if post.tags contains 'question' %}
+    {% if count < 20 %}
+      {% assign count = count|plus:1 %}
+      <div class="post_info">
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <span>({{ post.date | date:"%Y-%m-%d" }})</span>
+        </li>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}
 </ul>
