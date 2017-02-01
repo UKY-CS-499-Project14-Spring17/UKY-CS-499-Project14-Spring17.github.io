@@ -1,9 +1,8 @@
 ---
 layout: post
 tags: sparks
+title: Week 1 Report
 ---
-
-# Week 1 Report #
 
 ### Feb. 01, 2017 ###
 
