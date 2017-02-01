@@ -36,8 +36,33 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
+## Posts by Grant Sparks ##
 <ul class="posts">
 {% for post in site.tags.sparks limit: 20 %}
+  <div class="post_info">
+    <li>
+         <a href="{{ post.url }}">{{ post.title }}</a>
+         <span>({{ post.date | date:"%Y-%m-%d" }})</span>
+    </li>
+    </div>
+  {% endfor %}
+</ul>
+
+## Posts by Lucian Hymer ##
+<ul class="posts">
+{% for post in site.tags.hymer limit: 20 %}
+  <div class="post_info">
+    <li>
+         <a href="{{ post.url }}">{{ post.title }}</a>
+         <span>({{ post.date | date:"%Y-%m-%d" }})</span>
+    </li>
+    </div>
+  {% endfor %}
+</ul>
+
+## Posts by Patrick Thompson ##
+<ul class="posts">
+{% for post in site.tags.thompson limit: 20 %}
   <div class="post_info">
     <li>
          <a href="{{ post.url }}">{{ post.title }}</a>
