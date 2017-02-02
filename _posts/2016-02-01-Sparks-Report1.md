@@ -21,3 +21,6 @@ Met with team again. We assigned tasks. I am going to take charge of:
 
 * Web interface (should be done next week)
 * Documentation (this will be long term)
+* Setup repository for our team
+
+My goal for this week it to set up this website (already mostly done!) and to setup an appropriate repository for storing our work. I suppose we'll be using github so long as Dr. Dietz is okay with the code base being published. That said, I expect that Dietz will likely want this to be open-source and I think that this will be good for the transparency of the project long-term.
