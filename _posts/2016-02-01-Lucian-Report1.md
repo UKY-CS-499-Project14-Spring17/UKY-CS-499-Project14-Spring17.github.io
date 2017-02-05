@@ -18,14 +18,22 @@ Met with team. Went over how to use GitHub Pages and our tasks for the week. My 
 #### Work Log
 
 Completed all tasks:
-* Figure out how to obtain copy of windows
+
+1. Figure out how to obtain copy of windows
+
   * Used UK's [OntheHub](https://uky.onthehub.com/WebStore/Welcome.aspx) account to get a copy of Windows 7
-* Get VirtualBox working on my machine
+   
+2. Get VirtualBox working on my machine
+
   * Downloaded [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) and installed
   * Created new VM with 2GB RAM and a 25GB VM disk in VMDK format
   * Installed Windows 7 from ISO downloaded above
-* Install proprietary laser engraver software on VM
-  * __*Warning*only download on a VM__
+   
+3. Install proprietary laser engraver software on VM
+
+  * __Warning__ only download on a VM
   * Downloaded from [this link](http://www.htpow.com/laser-cutter.rar) on [this page](http://www.htpow.com/miniature-laser-engraver-p-1161.html)
-* Install Wireshark on my machine
+
+4. Install Wireshark on my machine
+
   * Downloaded with apt-get
