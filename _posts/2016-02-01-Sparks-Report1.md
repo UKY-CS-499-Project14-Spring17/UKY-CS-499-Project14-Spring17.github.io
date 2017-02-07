@@ -1,7 +1,7 @@
 ---
 layout: post
-tags: meetings
-title: Meeting Log - Jan. 30
+tags: sparks
+title: Week 1 Report
 ---
 
 ### Jan. 30, 2017 ###

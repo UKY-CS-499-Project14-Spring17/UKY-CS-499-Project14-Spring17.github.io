@@ -24,6 +24,7 @@ Additional goals (if time allows):
 ## Other materials ##
 
 <!-- TODO -->
+There's nothing to see here yet. As we find files of interest, or extra data you might like, we'll add it here.
 
 ## Recent Posts by Grant Sparks ##
 <ul class="posts">
