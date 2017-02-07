@@ -17,11 +17,26 @@ Additional goals (if time allows):
 * Reverse engineer images storage protocol
 * Pre-process raster image to minimize cutting time
 
-## Project Schedule ## <!-- TODO -->
+## Project Schedule ##
 
-The important completion dates. Some of these will be assigned by the instructor (requirements due, midterm presentation, final presentation) 
+|Week| M | W | F |
+|---:|---|---|---|
+|F  6 - 10| | Confirm Requirements | Launch Website |
+|F 13 - 17| | | |
+|F 20 - 24| | | |
+|F 27 - M 3| | | |
+|M  6 - 10| Design Due | | |
+|M 13 - 17| | | |
+|M 20 - 24| | | |
+|M 27 - 31| | | |
+|A  3 -  7| Test Cases Due | | |
+|A 10 - 14| | | |
+|A 17 - 21| | | |
+|A 24 - 28| | | |
+|M  1 -  5| | | |
 
-## Project Log ## <!-- TODO -->
+## Project Log ##
+<!-- TODO -->
 
 A log of project activity. All meetings (customer and team) are listed. Changes to project, agreements with customer are listed (do not have to be explained in detail, "bullet points" of changes).
 
