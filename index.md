@@ -17,6 +17,8 @@ Additional goals (if time allows):
 * Reverse engineer images storage protocol
 * Pre-process raster image to minimize cutting time
 
+#### [View Requirement Details](requirements.md)
+
 ## [View Project Schedule](schedule.md)
 
 ## [View Meeting Logs](meeting-log.md)
