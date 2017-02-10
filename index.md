@@ -51,6 +51,7 @@ There's nothing to see here yet. As we find files of interest, or extra data you
 </ul>
 
 ## Recent Posts by Patrick Thompson ##
+Main Role: Hardware and Software Interface Design
 <ul class="posts">
 {% for post in site.tags.thompson limit: 10 %}
   <div class="post_info">
