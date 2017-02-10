@@ -4,7 +4,7 @@ Our goal is to develop a portable, compilable tool to connect with HTPOW laser e
 
 ## Project Requirements ##
 
-Our project requirements (in order by precedent):
+Our project requirements (in priority order):
 
 * Reverse engineer protocol for HTPOW engraver
 * Reverse engineer image transefer protocol
