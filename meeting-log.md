@@ -1,7 +1,7 @@
 ---
 title: Meeting Logs
 ---
-# Meeting Logs #
+# Meeting Logs
 
 All meetings are listed. Changes to project and agreements with customer are called out in meeting notes.
 

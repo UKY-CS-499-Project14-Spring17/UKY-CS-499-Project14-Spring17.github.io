@@ -1,8 +1,8 @@
-# A Portable Interface for Laser Engravers #
+# A Portable Interface for Laser Engravers
 
 Our goal is to develop a portable, compilable tool to connect with HTPOW laser engravers. We'll update this landing page as we find new information to share with you. Read our weekly updates below, or check out the blog <!--- TODO --> for more information on what we discover.
 
-## Project Requirements ##
+## Project Requirements
 
 Our project requirements (in priority order, agreed to by customer):
 
@@ -17,16 +17,17 @@ Additional goals (if time allows):
 * Reverse engineer images storage protocol
 * Pre-process raster image to minimize cutting time
 
-## [View Project Schedule](schedule.md) ##
+## [View Project Schedule](schedule.md)
 
-## [View Meeting Logs](meeting-log.md) ##
+## [View Meeting Logs](meeting-log.md)
 
-## Other materials ##
+## Other materials
 
 <!-- TODO -->
 There's nothing to see here yet. As we find files of interest, or extra data you might like, we'll add it here.
 
-## Recent Posts by Grant Sparks ##
+## Recent Posts by Grant Sparks
+Main Role: Documentation, Revision Control, and Software Development
 <ul class="posts">
 {% for post in site.tags.sparks limit: 10 %}
   <div class="post_info">
@@ -38,7 +39,7 @@ There's nothing to see here yet. As we find files of interest, or extra data you
   {% endfor %}
 </ul>
 
-## Recent Posts by Lucian Hymer ##
+## Recent Posts by Lucian Hymer
 <ul class="posts">
 {% for post in site.tags.hymer limit: 10 %}
   <div class="post_info">
@@ -50,7 +51,7 @@ There's nothing to see here yet. As we find files of interest, or extra data you
   {% endfor %}
 </ul>
 
-## Recent Posts by Patrick Thompson ##
+## Recent Posts by Patrick Thompson
 Main Role: Hardware and Software Interface Design
 <ul class="posts">
 {% for post in site.tags.thompson limit: 10 %}

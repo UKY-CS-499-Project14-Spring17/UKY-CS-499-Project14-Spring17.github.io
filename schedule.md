@@ -1,4 +1,4 @@
-# Project Schedule #
+# Project Schedule
 
 |Week| M | W | F |
 |---:|:-:|:-:|:-:|

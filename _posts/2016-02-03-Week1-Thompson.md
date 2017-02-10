@@ -4,7 +4,7 @@ tags: thompson
 title: Week 1 Report
 ---
 
-### Jan. 30, 2017 ###
+### Jan. 30, 2017
 
 The team met with our customer, Dr. Dietz, and got a better idea of what the project entails. As it turns out there are some cheap laser engravers coming out of China right now, and Dr. Dietz has been playing around with a cheaper one. He has added more safety features and made an instructable on how to do so. The engraver runs using an unknown protocol and on a program that only runs on older version of Windows. Paul Eberhart has already decyphered some of the communications protocol. Our task is to finish figuring out the protocol and create a portable program that will run in Linux. 
 
