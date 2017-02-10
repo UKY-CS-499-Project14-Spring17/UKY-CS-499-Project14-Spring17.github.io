@@ -40,6 +40,7 @@ Main Role: Documentation, Revision Control, and Software Development
 </ul>
 
 ## Recent Posts by Lucian Hymer
+Main Role: Reverse-Engineering Protocol
 <ul class="posts">
 {% for post in site.tags.hymer limit: 10 %}
   <div class="post_info">
