@@ -1,6 +1,6 @@
 ## Our project requirements (in order by precedent):
 
-#### Reverse engineer intitial handshaking and image transefer protocol
+#### Reverse engineer intitial handshaking and image transfer protocol
 
 Our first requirement is to examine the HTPOW transfer protocol so we can send an image from the computer (from an image file) to the HTPOW engraver. Whether this is initially stored in the engraver's memory is not important.
 
@@ -33,7 +33,7 @@ If the three rectangles above were to be cut by the HTPOW without any guidance, 
 
 ![The black path crosses through the empty space without any rectangles repeatedly](/images/engraver-path-2.png)
 
-If each rectangle is sent to the HTPOW seperately, it will only carve the space within the rectange, and will not travel much through the empty space.
+If each rectangle is sent to the HTPOW separately, it will only carve the space within the rectangle, and will not travel much through the empty space.
 
 ![The black path does not cross through the empty spaces](/images/engraver-path-3.png)
 
