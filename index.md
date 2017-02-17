@@ -28,10 +28,11 @@ Additional goals (if time allows):
 <!-- TODO -->
 There's nothing to see here yet. As we find files of interest, or extra data you might like, we'll add it here.
 
-## Recent Posts by Grant Sparks
+## Grant Sparks [(View All Posts)](sparks-log.md)
 Main Role: Documentation, Revision Control, and Software Development
+
 <ul class="posts">
-{% for post in site.tags.sparks limit: 10 %}
+{% for post in site.tags.sparks limit: 5 %}
   <div class="post_info">
     <li>
          <a href="{{ post.url }}">{{ post.title }}</a>
@@ -41,10 +42,11 @@ Main Role: Documentation, Revision Control, and Software Development
   {% endfor %}
 </ul>
 
-## Recent Posts by Lucian Hymer
+## Lucian Hymer [(View All Posts)](hymer-log.md)
 Main Role: Reverse-Engineering Protocol
+
 <ul class="posts">
-{% for post in site.tags.hymer limit: 10 %}
+{% for post in site.tags.hymer limit: 5 %}
   <div class="post_info">
     <li>
          <a href="{{ post.url }}">{{ post.title }}</a>
@@ -54,10 +56,11 @@ Main Role: Reverse-Engineering Protocol
   {% endfor %}
 </ul>
 
-## Recent Posts by Patrick Thompson
+## Patrick Thompson [(View All Posts)](thompson-log.md)
 Main Role: Hardware and Software Interface Design
+
 <ul class="posts">
-{% for post in site.tags.thompson limit: 10 %}
+{% for post in site.tags.thompson limit: 5 %}
   <div class="post_info">
     <li>
          <a href="{{ post.url }}">{{ post.title }}</a>
