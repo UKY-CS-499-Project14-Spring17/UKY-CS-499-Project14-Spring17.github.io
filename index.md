@@ -19,10 +19,6 @@ Additional goals (if time allows):
 
 #### [View Requirement Details](requirements.md)
 
-## [View Project Schedule](schedule.md)
-
-## [View Meeting Logs](meeting-log.md)
-
 ## Other materials
 
 <!-- TODO -->

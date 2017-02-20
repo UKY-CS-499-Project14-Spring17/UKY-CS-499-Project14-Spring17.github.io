@@ -1,2 +1,5 @@
 # Ignore all _site/ dirs
 _site/
+
+# Ignore all .sw* files
+.*.sw*

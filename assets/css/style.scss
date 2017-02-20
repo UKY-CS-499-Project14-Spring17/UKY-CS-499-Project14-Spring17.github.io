@@ -1,0 +1,29 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+div.toc {
+  background: lightgrey;
+  color: #1e6bb8;
+  padding: 1em 1.5em;
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  ul {
+    list-style: square;
+  }
+}
+
+@media screen and (min-width: 1300px) and (min-height: 550px) {
+  div.toc {
+    position: fixed;
+    width: auto;
+    height: 40%;
+    left: 1.5em;
+    top: 65%;
+  }
+  section.main-content {
+    padding: 2rem 8rem;
+  }
+}
