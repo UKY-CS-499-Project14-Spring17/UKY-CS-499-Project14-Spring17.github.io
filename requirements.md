@@ -2,7 +2,7 @@
 
 #### Reverse engineer intitial handshaking and image transfer protocol
 
-Our first requirement is to examine the HTPOW transfer protocol so we can send an image from the computer (from an image file) to the HTPOW engraver. Whether this is initially stored in the engraver's memory is not important.
+Our first requirement is to examine the [HTPOW](https://www.amazon.com/HTPOW-Engraver-Printer-Handicraft-Engraving/dp/B01G36Q558) transfer protocol so we can send an image from the computer (from an image file) to the HTPOW engraver. Whether this is initially stored in the engraver's memory is not important.
 
 #### Implement driver in portable software language (C/C++)
 

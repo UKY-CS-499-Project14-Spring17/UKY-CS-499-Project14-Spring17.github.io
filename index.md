@@ -1,6 +1,6 @@
 # A Portable Interface for Laser Engravers
 
-Our goal is to develop a portable, compilable tool to connect with HTPOW laser engravers. We'll update this landing page as we find new information to share with you. Read our weekly updates below, or check out the blog <!--- TODO --> for more information on what we discover.
+Our goal is to develop a portable, compilable tool to connect with [HTPOW brand](https://www.amazon.com/HTPOW-Engraver-Printer-Handicraft-Engraving/dp/B01G36Q558) laser engravers. We'll update this landing page as we find new information to share with you. Read our weekly updates below, or check out the blog <!--- TODO --> for more information on what we discover.
 
 ## Project Requirements
 
