@@ -1,5 +1,5 @@
 ---
-title: Weekly Updates: Lucian Hymer
+title: "Weekly Updates: Lucian Hymer"
 ---
 # Weekly Updates: Lucian Hymer
 

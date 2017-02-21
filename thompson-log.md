@@ -1,5 +1,5 @@
 ---
-title: Weekly Updates: Patrick Thompson
+title: "Weekly Updates: Patrick Thompson"
 ---
 # Weekly Updates: Patrick Thompson
 

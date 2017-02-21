@@ -1,6 +1,7 @@
 ---
-title: Weekly Updates: Grant Sparks
+title: "Weekly Updates: Grant Sparks"
 ---
+
 # Weekly Updates: Grant Sparks
 
 {% for post in site.tags.sparks %}

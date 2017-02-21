@@ -19,9 +19,8 @@ Additional goals (if time allows):
 
 #### [View Requirement Details](requirements.md)
 
-## Other materials
+## Other materials <!-- TODO -->
 
-<!-- TODO -->
 There's nothing to see here yet. As we find files of interest, or extra data you might like, we'll add it here.
 
 ## Grant Sparks [(View All Posts)](sparks-log.md)
