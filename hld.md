@@ -13,11 +13,13 @@ The [HTPOW brand](https://www.amazon.com/HTPOW-Engraver-Printer-Handicraft-Engra
 
 <!-- List any requirements (operating system, database products, execution environment (Java, Perl, etc.). -->
 
-Our engraving software is written in C++ <!-- TODO --> and needs a gcc compiler. It has been tested in Ubuntu 14.04 and 16.04, gcc version TODO. Although not guaranteed, this code should be able to compile on any Linux/Unix system with a gcc compiler, possibly including Mac OSX. This software depends on the following libraries, which are linked or available through GNU<!-- TODO -->.
+Our engraving software is written in C++ <!-- TODO --> and needs a gcc compiler. It has been tested in Ubuntu 14.04 and 16.04, gcc version 5.2.1. Although not guaranteed, this code should be able to compile on any Linux/Unix system with a gcc compiler, possibly including Mac OS X.
+
+This software depends on the following libraries, which are linked or available through the GNU Standard Library: <!-- TODO -->
 
 ### Module Descriptions and Data Flow
 
-<!--Include a diagram showing the modules and data flow between them. Give a high level description of the function of each module. A pseudocode format is often used:
+<!--Include a diagram showing the modules and data flow between them. Give a high level description of the function of each module. A pseudo-code format is often used:
 
 ```
 Open grades file
@@ -33,9 +35,41 @@ While grades for student in file {
 
 Describe the data going into and out of the modules, using structures as necessary. -->
 
+<!-- TODO a module diagram might be nice -->
+
+#### Bitmap (.bmp) Format
+```
+	Interpret CLI options
+	Read in bitmap file
+	<< Enhancement: Analyze bitmap for contiguous regions >>
+	Test connection to serial port
+	Activate engraver
+	while( there are regions to engrave ) do
+		while( there are pixels to engrave in this region ) do
+			<< Enhancement: Greyscale settings: Set laser intensity >>
+			Move laser to next pixel
+		end
+		Travel to next region
+		Alert user, bitmap complete
+	end
+```
+
+<!-- TODO #### G-code (.mpt) Format
+```
+``` -->
+
 ### User Screens
 
 <!-- Include user screens with description of function and use. -->
+```
+$ htpewpew --help
+htpewpew: a CLI for serial communication to a HTPOW laser engraver
+usage: htpewpew 
+	-b, --bmp, --bitmap bmp			Send this bmp file to the engraver.
+	-g, --gc, --gcode gcode			Send this gcode file to the engraver.
+	-p, --port port_num   			Send the file to this serial port.
+	-h, --help            			Display this help message and quit.
+```
 
 ### User Scenarios (Use Cases)
 
