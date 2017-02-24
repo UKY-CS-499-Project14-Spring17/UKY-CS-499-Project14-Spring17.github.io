@@ -1,5 +1,9 @@
 # Ignore all _site/ dirs
 _site/
 
+<<<<<<< Updated upstream
 # Ignore all .sw* files
 .*.sw*
+=======
+*.sw*
+>>>>>>> Stashed changes
