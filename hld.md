@@ -62,13 +62,17 @@ Describe the data going into and out of the modules, using structures as necessa
 
 <!-- Include user screens with description of function and use. -->
 ```
-$ htpewpew --help
 htpewpew: a CLI for serial communication to a HTPOW laser engraver
-usage: htpewpew 
-	-b, --bmp, --bitmap bmp			Send this bmp file to the engraver.
-	-g, --gc, --gcode gcode			Send this gcode file to the engraver.
-	-p, --port port_num   			Send the file to this serial port.
-	-h, --help            			Display this help message and quit.
+usage: htpewpew image [options] 
+  -b, --max-burn-time t     Set the maximum burn time (default = ? ms)
+  -d, --dry-run             Show engraving box and do not engrave
+  -i, --max-intensity s     Set the maximum burn intensity (default = ?)
+  -o, --output image        Store the altered image at this location
+  -p, --port port-num       Send the file to this serial port.
+  -t, --bw, --threshold x%  Use a threshold with x% (default = 50%)
+  -x, --x-offset x          Set x offset for image
+  -y, --y-offset y          Set y offset for image
+  -h, --help                Display this help message and quit.
 ```
 
 ### User Scenarios (Use Cases)
