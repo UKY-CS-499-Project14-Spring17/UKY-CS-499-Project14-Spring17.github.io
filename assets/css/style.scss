@@ -16,16 +16,38 @@ div.toc {
   }
 }
 
+pre:not(.highlight) {
+//  overflow: hidden;
+//  height: 3em;
+//  transition: height 1s linear;
+  &:before {
+    content: 'Hover to View Example';
+  }
+  code.language-hide {
+    display: none;
+  }
+}
+
+div:hover + pre:not(.highlight), pre:not(.highlight):hover {
+//  height: auto;
+  &:before {
+    content: none;
+  }
+  code.language-hide {
+    display: inherit;
+  }
+}
+
 @media screen and (min-width: 1300px) and (min-height: 550px) {
   div.toc {
     position: fixed;
     width: auto;
-    height: 45%;
+    height: 60%;
     left: 1.5em;
     top: 90%;
   }
   div.toc:hover {
-    top: 60%;
+    top: 57%;
   }
   section.main-content {
     padding: 2rem 8rem;
