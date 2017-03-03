@@ -39,7 +39,6 @@ Describe the data going into and out of the modules, using structures as necessa
 
 Overall the program accepts 2 kinds of data, pictures to carve and user command line input to interpret. The CLI Parser module, short for Command Line Input Parser, handles parsing the user's input so the program can interpret the commands the user wants to execute. The CLI Parser takes in user input and from it determines what options to set for the image and what image to carve. The Resize Image module resizes the input image to the size that the engraver can print. Then the Convert to Greyscale module converts the image to greyscale so that color images can be engraved. The last image manipulation module is the Threshold module which converts the greyscale pixels to black and white pixels only, based on the threshold value the user entered. If no threshold value was entered then the engraver engraves the greyscale image. The Streamer module is what brings it all together and determines how to break down the image and options into the correct protocol to send to the engraver. <!-- I don't know what the Protocol Definitions module is for so add that here. --> 
 
-#### Bitmap (.bmp) Format
 ```
 	Interpret CLI options
 	Read in bitmap file
@@ -111,17 +110,18 @@ Based on the modules in the above data flow diagram we estimated how many lines 
 <!-- Basically I would like to put our sizing extimates slide in here from the presentation but I am not sure how to do that in a markdown file. -->
 
 Size in Lines of Code
+
 150 Command Line Parser
 
 100 Protocol Definitions
 
 300 Image Preparation
-100 Resize
-100 Greyscale
-100 Threshold for Monochrome
+* 100 Resize
+* 100 Greyscale
+* 100 Threshold for Monochrome
 
 500 Streamer
-===============
+<hr/>
 1050 Total Lines of Code
 
 ### Documentation specific to your project
