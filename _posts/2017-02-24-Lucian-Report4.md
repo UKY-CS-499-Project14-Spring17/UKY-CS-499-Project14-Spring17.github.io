@@ -4,7 +4,7 @@ tags: hymer
 title: Week 5 Report
 ---
 
-### Monday February 27, 2017 
+### Feb. 27, 2017 
 
 I spent today trying to get data for the additional test cases we identified last week.
 It was straightforward to get samples of horizontal and vertical lines with breaks.
@@ -16,11 +16,12 @@ When we tried to engrave the image, the software and/or engraver kept crashing. 
 We eventually were able to create useful date by drawing just the outlines of boxes. Even this took a couple shots however, the engraver continued to crash.
 We noticed that the engraver generally reports back it's status signal (well, we think it's a status signal) every 800ms. However when it crashes, the signal is reported every 100ms.
 
-### Wednesday March 1, 2017
+### Mar. 1, 2017
 
 I didn't get a whole lot done today, I had other commitments. We worked on finalizing our design and presentation.
 
-### Friday March 3, 2017
+
+### Mar. 3, 2017
 
 We talked to the engraver today! I used the `screen` program to connect while monitoring with `tshark`.
 I identified the device by saving the output of `ls /dev/` with the engraver unplugged and diffing after plugging in the engraver. It was `/dev/ttyUSB0`.
