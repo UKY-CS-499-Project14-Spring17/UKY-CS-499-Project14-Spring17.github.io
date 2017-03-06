@@ -89,28 +89,36 @@ usage: htpewpew image [options]
 
 A user will start the program from the command line, entering any options they want to change as the program is called. In most cases the user will start by calling the program with the -d option to see the cutting area of the laser on the media they wish to cut. Then the user can adjust the location of the cutting area with the -x and -y options. Once the laser is in the correct location on the media the user would then call the program with any of the cutting settings (-b, -i) or image settings (-t) they want to change from default values and the engraving will begin automatically.
 
-Display Help Options
+**Display Help Options**
+
 1. Call the program from the terminal with "htpewpew -h".
 
-See the Engraving Area
+**See the Engraving Area**
+
 1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -d" to have the laser outline the current area where the picture will be engraved on the media.
 
-Move the Engraving Area
+**Move the Engraving Area**
+
 1. Call the program with "htpewpew -p \<port engraver is on> -x \<how much to move the area horizontally (negative values are left and positive values are right)> -y \<how much to move the area vertically (negative values are down and positive values are up)>".
 
-Engrave a Greyscale Image
+**Engrave a Greyscale Image**
+
 1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on>".
 
-Change How Long the Laser Burns Each Pixel
+**Change How Long the Laser Burns Each Pixel**
+
 1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -b \<time in milliseconds to spend on each pixel>".
 
-Change the Intensity or Power Output of the Laser
+**Change the Intensity or Power Output of the Laser**
+
 1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -i \<percent power output>".
 
-Output the Finale Image Sent to the Engraver
+**Output the Finale Image Sent to the Engraver**
+
 1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -o \<directory to save the image file>".
 
-Engrave an Image Only in Black and White Not Greyscale
+**Engrave an Image Only in Black and White Not Greyscale**
+
 1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -t \<percent of white/black range to change to black>". 
 
 <!-- I may misunderstand how we intend to do this program but based on what it looks like right now I think we should change it. I feel like we should call the program with a serial port passed to it and then the program sits and waits for user input until it gets an image and the go to start engraving. Once the engraving has begun the user can't send anymore commands. Once its done the program spits out a completion status and goes back to waiting for an image to cut and accept changes to settings. -->
