@@ -37,7 +37,7 @@ Describe the data going into and out of the modules, using structures as necessa
 
 <!-- TODO a module diagram might be nice -->
 
-Overall the program accepts 2 kinds of data, pictures to carve and user command line input to interpret. The CLI Parser module, short for Command Line Input Parser, handles parsing the user's input so the program can interpret the commands the user wants to execute. The CLI Parser takes in user input and from it determines what options to set for the image and what image to carve. The Resize Image module resizes the input image to the size that the engraver can print. Then the Convert to Greyscale module converts the image to greyscale so that color images can be engraved. The last image manipulation module is the Threshold module which converts the greyscale pixels to black and white pixels only, based on the threshold value the user entered. If no threshold value was entered then the engraver engraves the greyscale image. The Streamer module is what brings it all together and determines how to break down the image and options into the correct protocol to send to the engraver. <!-- I don't know what the Protocol Definitions module is for so add that here. --> 
+Overall the program accepts 2 kinds of data, pictures to carve and user command line input to interpret. The CLI Parser module, short for Command Line Input Parser, handles parsing the user's input so the program can interpret the commands the user wants to execute. The CLI Parser takes in user input and from it determines what options to set for the image and what image to carve. The Resize Image module resizes the input image to the size that the engraver can print. Then the Convert to Greyscale module converts the image to greyscale so that color images can be engraved. The last image manipulation module is the Threshold module which converts the greyscale pixels to black and white pixels only, based on the threshold value the user entered. If no threshold value was entered then the engraver engraves the greyscale image. The Protocol Definitions module is a library of protocol definitions that the Streamer will reference to send the right instructions to the engraver. The Streamer module is what brings it all together and determines how to break down the image and options into the correct protocol to send to the engraver.
 
 ```
 	Interpret CLI options
@@ -65,9 +65,9 @@ Overall the program accepts 2 kinds of data, pictures to carve and user command 
 ```
 htpewpew: a CLI for serial communication to a HTPOW laser engraver
 usage: htpewpew image [options] 
-  -b, --max-burn-time t     Set the maximum burn time (default = ? ms)
+  -b, --max-burn-time t     Set the maximum burn time (default = 50 ms)
   -d, --dry-run             Show engraving box and do not engrave
-  -i, --max-intensity s     Set the maximum burn intensity (default = ?)
+  -i, --max-intensity s     Set the maximum burn intensity (default = 50%)
   -o, --output image        Store the altered image at this location
   -p, --port port-num       Send the file to this serial port.
   -t, --bw, --threshold x%  Use a threshold with x% (default = 50%)
@@ -89,6 +89,30 @@ usage: htpewpew image [options]
 
 A user will start the program from the command line, entering any options they want to change as the program is called. In most cases the user will start by calling the program with the -d option to see the cutting area of the laser on the media they wish to cut. Then the user can adjust the location of the cutting area with the -x and -y options. Once the laser is in the correct location on the media the user would then call the program with any of the cutting settings (-b, -i) or image settings (-t) they want to change from default values and the engraving will begin automatically.
 
+Display Help Options
+1. Call the program from the terminal with "htpewpew -h".
+
+See the Engraving Area
+1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -d" to have the laser outline the current area where the picture will be engraved on the media.
+
+Move the Engraving Area
+1. Call the program with "htpewpew -p \<port engraver is on> -x \<how much to move the area horizontally (negative values are left and positive values are right)> -y \<how much to move the area vertically (negative values are down and positive values are up)>".
+
+Engrave a Greyscale Image
+1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on>".
+
+Change How Long the Laser Burns Each Pixel
+1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -b \<time in milliseconds to spend on each pixel>".
+
+Change the Intensity or Power Output of the Laser
+1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -i \<percent power output>".
+
+Output the Finale Image Sent to the Engraver
+1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -o \<directory to save the image file>".
+
+Engrave an Image Only in Black and White Not Greyscale
+1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -t \<percent of white/black range to change to black>". 
+
 <!-- I may misunderstand how we intend to do this program but based on what it looks like right now I think we should change it. I feel like we should call the program with a serial port passed to it and then the program sits and waits for user input until it gets an image and the go to start engraving. Once the engraving has begun the user can't send anymore commands. Once its done the program spits out a completion status and goes back to waiting for an image to cut and accept changes to settings. -->
 
 ### Design Considerations
@@ -105,9 +129,8 @@ We have also considered adding more functionality than what the current Super Ca
 
 <!-- Size estimates of modules, either lines of code, story points, or function points (see the Software Process and Project metrics slides). Note: Its accuracy will not affect your grade -->
 
-Based on the modules in the above data flow diagram we estimated how many lines of code each module will require, and based on our schedule we estimated the number of student weeks we have to complete the project.
+Based on the modules in the above data flow diagram we estimated how many lines of code each module will require.
 
-<!-- Basically I would like to put our sizing extimates slide in here from the presentation but I am not sure how to do that in a markdown file. -->
 
 Size in Lines of Code
 
@@ -123,21 +146,3 @@ Size in Lines of Code
 500 Streamer
 <hr/>
 1050 Total Lines of Code
-
-### Documentation specific to your project
-
-<!-- This is an outline of a generic project. Modify it to suite yours. The design document is used by the project members to complete the project and for technically competent readers to understand what you are doing. -->
-
-<!-- I don't think this is meant to be a separate heading. I think this was in the online specification to indicate that we can add other sections to the design report that make sense. I feel like we could maybe add our schedule or leave it out and not even mention it in sizing. I can't think of any extra sections we should really have except maybe something specifically about the engraver in general, but since that is taken care of elsewhere on the site it kind of seems redundant. Let me know what you think. -->
-
-### The Formal Development Environment (for reference)
-
-<!-- In a formal project development environment, the design document is approved by the project manager and technical leaders responsible for development.
-
-The design document can be changed if necessary during product development. However there usually is a procedure to do this (with appropriate approvals needed). When a design change is being considered, affected groups have to be notified and may have to approve. For example, if a design change affects the requirements approved by the customer, customer approval is necessary.
-
-It is also recommended that testing groups participate and approve the design. Testing groups like the integration and system groups use the design document to create test cases.
-
-For your projects, the customer does not have to approve the design document. However, anything in it that affects the customer (platform, user screens, etc.) must be approved. -->
-
-<!-- This is another section that I don't think is meant to be a section in the report. I think this is just him explaining how a design document is more likely to go in the real world. -->
