@@ -13,36 +13,28 @@ The [HTPOW brand](https://www.amazon.com/HTPOW-Engraver-Printer-Handicraft-Engra
 
 <!-- List any requirements (operating system, database products, execution environment (Java, Perl, etc.). -->
 
-Our engraving software is written in C++ <!-- TODO --> and needs a gcc compiler. It has been tested in Ubuntu 14.04 and 16.04, gcc version 5.2.1. Although not guaranteed, this code should be able to compile on any Linux/Unix system with a gcc compiler, possibly including Mac OS X.
+Our engraving software is written in C/C++ and needs a gcc compiler. It has been tested in Ubuntu 14.04 and 16.04, gcc version 5.2.1 and 5.4.0. Although not guaranteed, this code should be able to compile on any Linux/Unix system with a gcc compiler, possibly including Mac OS X.
 
 This software depends on the following libraries, which are linked or available through the GNU Standard Library: <!-- TODO -->
+
+* argp, part of the GNU standard library
+* [ImageMagick](https://www.imagemagick.org/script/download.php)
 
 ### Module Descriptions and Data Flow
 
 <!--Include a diagram showing the modules and data flow between them. Give a high level description of the function of each module. A pseudo-code format is often used:
 
-```
-Open grades file
-While grades for student in file {
-  If valid grade (0-100)
-    Add grade to student total
-  else  {
-    Report error to user screen
-    Create error report for history
-  } 
-}
-```
-
 Describe the data going into and out of the modules, using structures as necessary. -->
 
-<!-- TODO a module diagram might be nice -->
+![An image showing the relationships of code modules and external modules](/images/modules.png)
 
 Overall the program accepts 2 kinds of data, pictures to carve and user command line input to interpret. The CLI Parser module, short for Command Line Input Parser, handles parsing the user's input so the program can interpret the commands the user wants to execute. The CLI Parser takes in user input and from it determines what options to set for the image and what image to carve. The Resize Image module resizes the input image to the size that the engraver can print. Then the Convert to Greyscale module converts the image to greyscale so that color images can be engraved. The last image manipulation module is the Threshold module which converts the greyscale pixels to black and white pixels only, based on the threshold value the user entered. If no threshold value was entered then the engraver engraves the greyscale image. The Protocol Definitions module is a library of protocol definitions that the Streamer will reference to send the right instructions to the engraver. The Streamer module is what brings it all together and determines how to break down the image and options into the correct protocol to send to the engraver.
 
 ```
 	Interpret CLI options
-	Read in bitmap file
-	<< Enhancement: Analyze bitmap for contiguous regions >>
+	Read in image file
+  Alter image (resize, greyscale, and threshold)
+	<< Enhancement: Analyze image for contiguous regions >>
 	Test connection to serial port
 	Activate engraver
 	while( there are regions to engrave ) do
@@ -55,71 +47,74 @@ Overall the program accepts 2 kinds of data, pictures to carve and user command 
 	end
 ```
 
-<!-- TODO #### G-code (.mpt) Format
-```
-``` -->
+<!-- TODO #### G-code (.mpt) Format -->
 
 ### User Screens
 
 <!-- Include user screens with description of function and use. -->
 ```
+$ htpewpew.new --help
+Usage: htpewpew.new [OPTION...] infile
 htpewpew: a CLI for serial communication to a HTPOW laser engraver
-usage: htpewpew image [options] 
-  -b, --max-burn-time t     Set the maximum burn time (default = 50 ms)
-  -d, --dry-run             Show engraving box and do not engrave
-  -i, --max-intensity s     Set the maximum burn intensity (default = 50%)
-  -o, --output image        Store the altered image at this location
-  -p, --port port-num       Send the file to this serial port.
-  -t, --bw, --threshold x%  Use a threshold with x% (default = 50%)
-  -x, --x-offset x          Set x offset for image
-  -y, --y-offset y          Set y offset for image
-  -h, --help                Display this help message and quit.
-```
+NOTE: If no file is supplied, htpewpew will enter interactive shell mode.
 
-<!-- Maybe add a screenshot even if it is just a terminal. -->
+ ENGRAVER PARAMETERS:
+  -b, --burn-time=burn       Set maximum burn time (default = ? ms)
+  -d, --dry-run              Edit image, show engraving area, and quit
+  -i, --intensity=intensity  Set the laser intensity (default = ?)
+  -o, --output=outfile       Output to OUTFILE instead of to standard output
+  -p, --port=port            Location of USB serial port
+  -t, --threshold[=threshold], --bw[=threshold]
+                             Use a threshold (0-100%) for black and white
+                             (default = 50%)
+  -x, --x-offset=x           Automatically offset x location (0-?)
+  -y, --y-offset=y           Automatically offset y location (0-?)
+
+ INTERFACE PARAMETERS:
+  -s, --silent               Supress all standard messages
+  -v, --verbose              Enables additional debugging notes
+
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+```
 
 ### User Scenarios (Use Cases)
 
-<!-- Include the typical steps a user would do for major functions:
-
-1.    When the user starts the program the first screen appears shown above as “Main Menu” appears
-2.    When the user selects option “Enter grades” the “Enter Grades” screen appears
-3.    The user can enter grades by …. When finished the user …. 
-4.    The report shown above as “Grade Report” is generated by …… -->
 
 A user will start the program from the command line, entering any options they want to change as the program is called. In most cases the user will start by calling the program with the -d option to see the cutting area of the laser on the media they wish to cut. Then the user can adjust the location of the cutting area with the -x and -y options. Once the laser is in the correct location on the media the user would then call the program with any of the cutting settings (-b, -i) or image settings (-t) they want to change from default values and the engraving will begin automatically.
 
 **Display Help Options**
 
-1. Call the program from the terminal with "htpewpew -h".
+Call the program from the terminal with `htpewpew -?` or `htpewpew --help`.
 
 **See the Engraving Area**
 
-1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -d" to have the laser outline the current area where the picture will be engraved on the media.
+Call the program from the terminal with `htpewpew -p <engraver port> -d` to have the laser outline the current area where the picture will be engraved on the media.`-p /dev/ttyUSB0` is probably the option you want, unless you have a lot of USB devices attached.
 
 **Move the Engraving Area**
 
-1. Call the program with "htpewpew -p \<port engraver is on> -x \<how much to move the area horizontally (negative values are left and positive values are right)> -y \<how much to move the area vertically (negative values are down and positive values are up)>".
+Call the program with `htpewpew -p <engraver port> -x <how much to move the area horizontally (negative values are left and positive values are right)> -y <how much to move the area vertically (negative values are down and positive values are up)>`.
 
 **Engrave a Greyscale Image**
 
-1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on>".
+Call the program from the terminal with `htpewpew <image file> -p <engraver port>`.
 
 **Change How Long the Laser Burns Each Pixel**
 
-1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -b \<time in milliseconds to spend on each pixel>".
+Call the program from the terminal with `htpewpew -p <engraver port> -b <time in milliseconds to spend on each pixel>`.
 
 **Change the Intensity or Power Output of the Laser**
 
-1. Call the program from the terminal with "htpewpew -p \<port engraver is on> -i \<percent power output>".
+Call the program from the terminal with `htpewpew -p <engraver port> -i <power output (0 to 10)>`.
 
 **Output the Finale Image Sent to the Engraver**
 
-1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -o \<directory to save the image file>".
+Call the program from the terminal with `htpewpew <image file> -p <engraver port> -o <directory to save the image file>`.
 
 **Engrave an Image Only in Black and White Not Greyscale**
 
-1. Call the program from the terminal with "htpewpew \<image file> -p \<port engraver is on> -t \<percent of white/black range to change to black>". 
+Call the program from the terminal with `htpewpew <image file> -p <engraver port> -t <percent of white/black range to change to black>`. 
 
 <!-- I may misunderstand how we intend to do this program but based on what it looks like right now I think we should change it. I feel like we should call the program with a serial port passed to it and then the program sits and waits for user input until it gets an image and the go to start engraving. Once the engraving has begun the user can't send anymore commands. Once its done the program spits out a completion status and goes back to waiting for an image to cut and accept changes to settings. -->
 
@@ -135,18 +130,16 @@ We have also considered adding more functionality than what the current Super Ca
 
 ### Sizing Estimate
 
-<!-- Size estimates of modules, either lines of code, story points, or function points (see the Software Process and Project metrics slides). Note: Its accuracy will not affect your grade -->
-
 Based on the modules in the above data flow diagram we estimated how many lines of code each module will require.
 
-
-Size in Lines of Code
+#### Size in Lines of Code
 
 150 Command Line Parser
 
 100 Protocol Definitions
 
 300 Image Preparation
+
 * 100 Resize
 * 100 Greyscale
 * 100 Threshold for Monochrome
