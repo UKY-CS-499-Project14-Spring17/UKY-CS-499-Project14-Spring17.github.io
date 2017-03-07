@@ -17,7 +17,7 @@ Our engraving software is written in C/C++ and needs a gcc compiler. It has been
 
 This software depends on the following libraries, which are linked or available through the GNU Standard Library: <!-- TODO -->
 
-* argp, part of the GNU standard library
+* ARGP (part of the GNU Standard Library)
 * [ImageMagick](https://www.imagemagick.org/script/download.php)
 
 ### Module Descriptions and Data Flow
