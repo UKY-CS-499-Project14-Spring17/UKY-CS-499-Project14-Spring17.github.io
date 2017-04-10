@@ -13,7 +13,7 @@ On Thursday I bought my new computer and put Ubuntu on it. I was able to figure 
 
 On Friday we met again and integrated our code. Suprisingly the code ran the first try after connecting to the engraver. It didn't actually engraver, but it moved and was firing. We tweaked a lot on the code and we think that the power of the laser has gotten turned down so we will try and turn it back up in our next meeting.
 
-I also looked into the beginning protocol of the engraving again after Grant said he didn't think my assessment in my March 12th post was corect. It turns out he was right.
+I also looked into the beginning protocol of the engraving again after Grant said he didn't think my assessment in my March 12th post was correct. It turns out he was right.
 
 New information has shown that what I thought before about the software sending 90 commands and then waiting is incorrect. The software does a read every 30 instructions to wait and make sure it is not overloading the engraver. Our data captures show the engraver sending a message to the software while the software is still sending instructions during the first 90 instructions. This made it appear as though the software was not looking for messages from the engraver for the first 90 instructions. Some of the data captures, however, showed the software waiting on the engraver after 60 instructions. 
 
