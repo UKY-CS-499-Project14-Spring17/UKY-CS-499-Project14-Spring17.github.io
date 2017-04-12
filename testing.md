@@ -34,6 +34,8 @@ Once all 4 units are tied together the testing doesn't change much. Essentially 
 
 Once the program is actually connected to the engraver all of the same tests apply as in integration testing, but a few more can also be added. The case when the engraver is powered down or the communication connection pulled while the program is sending instructions.
 
+System Testing will occur with computers running Ubuntu Linux 16.04 and 14.04, using an HTPOW 1000mW engraver.
+
 
 ### Customer Testing
 Customer testing will be performed by our customer, Dr. Dietz, if he deems it necessary. We will walk him through all of our testing and he can ask us to perform more tests or test for himself at his discretion. We expect some basic functionality testing if nothing else to make sure the code meets requirements.
@@ -41,6 +43,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 
 ### Unit Tests
+
 #### Image.c
 
 | ID |Test Case| Action | Expected Output | Actual Output |
@@ -53,9 +56,9 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 |resize_image_4| Input image with Y dimension only greater than 489. | Image should be resized in the Y dimension. |  |
 |antialias_1| Input any image. | Line in image should be thickened. |  |
 |greyscale_1| Input any non black and white image. | Image should be converted to greyscale. |  |
-|threshold_1| Input any non black and white image with %50 threshold value. | Image should be converted to black and white appropriately. |  |
-|threshold_2| Input any non black and white image with %0 threshold value. | Image should be converted to all white. |  |
-|threshold_3| Input any non black and white image with %100 threshold value. | Image should be converted to all black. |  |
+|threshold_1| Input any non black and white image with 50% threshold value. | Image should be converted to black and white appropriately. |  |
+|threshold_2| Input any non black and white image with 0% threshold value. | Image should be converted to all white. |  |
+|threshold_3| Input any non black and white image with 100% threshold value. | Image should be converted to all black. |  |
 |prepare_1| Input is not a file. | stderr |  |
 |prepare_2| Input is not an image file. | stderr |  |
 |prepare_3| threshold input equal to -1. | Calls greyscale on the image. |  |
@@ -65,6 +68,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 
 #### cli.c
+
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
 |cli_1| Call verbose function followed by silent function. | stderr |  |
@@ -77,6 +81,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 
 #### pixelator.c
+
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
 |center_pixel_1| Call with NULL pixel pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
@@ -104,6 +109,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 
 #### main.c
+
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
 |parse_veb_1| Call with blank input. | Print usage message to user. |  |
@@ -133,6 +139,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 
 #### streamer.c
+
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
 |stream_1| Call with NULL pixel_state pointer. | ferr |  |
