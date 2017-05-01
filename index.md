@@ -6,16 +6,16 @@ Our goal is to develop a portable, compilable tool to connect with [HTPOW brand]
 
 Our project requirements (in priority order, agreed to by customer):
 
-* Reverse engineer protocol for HTPOW engraver
-* Reverse engineer image transefer protocol
-* Implement driver in portable software language (C/C++)
-* Implement Command Line Interface (CLI) for driver
+* Reverse engineer protocols for the HTPOW engraver.
+* Reverse engineer the image transfer protocol.
+* Implement driver in a portable software language (C/C++).
+* Implement Command Line Interface (CLI) for the driver.
 
 Additional goals (if time allows):
 
-* Reverse engineer settings/speed protocol
-* Reverse engineer images storage protocol
-* Pre-process raster image to minimize cutting time
+* Reverse engineer the settings/speed protocol.
+* Reverse engineer the image storage protocol.
+* Pre-process raster image to minimize cutting time.
 
 #### [View Requirement Details](requirements.md)
 
