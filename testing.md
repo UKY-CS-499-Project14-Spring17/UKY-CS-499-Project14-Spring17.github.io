@@ -48,23 +48,23 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
-|throw_wand_exception_1| Input filename that does not exist. | stderr output |  |
-|throw_wand_exception_2| Input correct filename. | No error |  |
-|resize_image_1| Input image with dimensions less than 489x489. | Image should not be resized. |  |
-|resize_image_2| Input image with dimensions greater than 489x489. | Image should be resized. |  |
-|resize_image_3| Input image with X dimension only greater than 489. | Image should be resized in the X dimension. |  |
-|resize_image_4| Input image with Y dimension only greater than 489. | Image should be resized in the Y dimension. |  |
-|antialias_1| Input any image. | Line in image should be thickened. |  |
-|greyscale_1| Input any non black and white image. | Image should be converted to greyscale. |  |
-|threshold_1| Input any non black and white image with 50% threshold value. | Image should be converted to black and white appropriately. |  |
-|threshold_2| Input any non black and white image with 0% threshold value. | Image should be converted to all white. |  |
-|threshold_3| Input any non black and white image with 100% threshold value. | Image should be converted to all black. |  |
-|prepare_1| Input is not a file. | stderr |  |
-|prepare_2| Input is not an image file. | stderr |  |
-|prepare_3| threshold input equal to -1. | Calls greyscale on the image. |  |
-|prepare_4| No outfile input. | Does not create an output file. |  |
-|prepare_5| Outfile input. | Creates an output file. |  |
-|cleanup_1| Input any wand. | Deallocates wand. |  |
+|throw_wand_ exception_1| Input filename that does not exist. | Call `throw_wand_exception` method after entering a non-existent filename. | Message on stderr ```throw_wand_exception 32 unable to open image``` | Pass |
+|throw_wand_ exception_2| Input correct filename. | Call `throw_wand_exception method` after entering a good filename. | No error is issued. Return value is 0. | Pass |
+|resize_image_1| Input image with dimensions less than 489x489. | Call `resize_image` method. | Image should not be resized. | Pass |
+|resize_image_2| Input image with dimensions greater than 489x489. | Call `resize_image` method. | Image should be scaled. Larger size should be 489px. | Pass |
+|resize_image_3| Input image with X dimension only greater than 489. | Call `resize_image` method. | Image should be scaled so that the X dimension is 489px. | Pass |
+|resize_image_4| Input image with Y dimension only greater than 489. | Call `resize_image` method. | Image should be scaled so that the Y dimension is 489px. | Pass |
+|antialias_1| Input any image. | Call `antialias_image` method. | Line in image should be thickened. | Untested |
+|greyscale_1| Input any non black and white image. | Call `greyscale_image` method. | Image should be converted to greyscale. | Untested |
+|threshold_1| Input any non black and white image with 50% threshold value. | Call `threshold_image` method. | Image should be converted to black and white appropriately. | Pass |
+|threshold_2| Input any non black and white image with 0% threshold value. | Call `threshold_image` method. | Image should be converted to all white. | Pass |
+|threshold_3| Input any non black and white image with 100% threshold value. | Call `threshold_image` method. | Image should be converted to all black. | Pass |
+|prepare_1| Input is not a file. | Call `prepare_image` method. | Message on stderr ```throw_wand_exception 32 unable to open image``` | Pass |
+|prepare_2| Input is not an image file. | Call `prepare_image` method. | Message on stderr ```throw_wand_exception 32 unable to open image``` | Pass |
+|prepare_3| threshold input equal to -1. | Call `prepare_image` method. | Calls greyscale on the image. | Pass |
+|prepare_4| Outfile input. | Creates an output file at output.jpg. | Call `prepare_image` method. | Pass |
+|prepare_5| No outfile input. | Call `prepare_image` method. | Does not create an output file. | Pass |
+|cleanup_1| Input any wand. | Call `cleanup_image` method. | Deallocates wand. | (untested) |
 
 
 #### cli.c
