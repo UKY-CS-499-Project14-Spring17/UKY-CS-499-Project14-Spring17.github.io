@@ -100,12 +100,12 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 |bottom_right_2| Call with NULL wand pointer. | Call `get_bottom_right_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
 |bottom_right_3| Call with an all white image. | Call `get_bottom_right_pixel` method. | Returns the top left pixel. | Pass |
 |bottom_right_4| Call with normal image. | Call `get_bottom_right_pixel` method. | Returns correct bottom right pixel in image. | Pass |
-|get_next_1| Call with NULL pixel_state pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. |  |
-|get_next_2| Call with NULL wand pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. |  |
-|get_next_3| Call with NULL pixel pointer. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
-|get_next_4| Call with NULL iterator. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
-|get_next_5| Call with next pixel not being a white pixel. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
-|get_next_6| Call with next pixel being a white pixel. | Call `get_next_pixel` method. | Completes normally by setting pixel and iterator to NULL. |  |
+|get_next_1| Call with NULL pixel_state pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|get_next_2| Call with NULL wand pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|get_next_3| Call with NULL pixel pointer. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. | Fail |
+|get_next_4| Call with NULL iterator. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. | Fail |
+|get_next_5| Call with next pixel not being a white pixel. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. | Fail |
+|get_next_6| Call with next pixel being a white pixel. | Call `get_next_pixel` method. | Completes normally by setting pixel and iterator to NULL. | Pass |
 
 
 #### main.c
