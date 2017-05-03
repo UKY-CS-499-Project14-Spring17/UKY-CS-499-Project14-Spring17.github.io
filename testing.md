@@ -71,13 +71,13 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
-|cli_1| Call verbose function followed by silent function. | stderr |  |
-|cli_2| Call silent function followed by verbose function. | stderr |  |
-|cli_3| Call silent function followed by fmsg function. | no stdout |  |
-|cli_4| Call silent function followed by fnote function. | no stdout |  |
-|cli_5| Call verbose function followed by fnote function. | stdout |  |
-|cli_6| Call fwarn function. | stderr |  |
-|cli_7| Call ferr function. | stderr |  |
+|cli_1| Make sure verbose and silent options can't be used at the same time. | Call verbose function followed by silent function. | Print error message to the user. | Pass
+|cli_2| Make sure verbose and silent options can't be used at the same time. | Call silent function followed by verbose function. | Print error message to the user. | Pass
+|cli_3| Make sure silent option silences messages. | Call silent function followed by fmsg function. | There should be no output. | Pass
+|cli_4| Make sure silent option silences notes. | Call silent function followed by fnote function. | There should be no output. | Pass
+|cli_5| Make sure verbose option activates notes. | Call verbose function followed by fnote function. | The fnote message should be printed with appropriate formatting. | Pass
+|cli_6| Make sure fwarn prints to stderr with formatting. | Call fwarn function. | The fwarn message should be printed with appropriate formatting. | Pass
+|cli_7| Make sure ferr prints to stderr with formatting. | Call ferr function. | The ferr message should be printed with appropriate formatting. | Pass
 
 
 #### pixelator.c
@@ -86,7 +86,7 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 |---:|:-:|:-:|:-:|:-:|
 |center_pixel_1| Call with NULL pixel pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
 |center_pixel_2| Call with pixel that is too big. | Call pixel_exception function to stop engraving and report error to user. |  |
-|center_pixel_3| Call witha normal pixel. | Function executes normally by adjusting the pixel value appropriately. |  |
+|center_pixel_3| Call with a normal pixel. | Function executes normally by adjusting the pixel value appropriately. |  |
 |get_pixel_intensity_1| Input a white pixel. | Returns with an intensity value of 0. |  |
 |get_pixel_intensity_2| Input a grey pixel. | Returns with an appropriate intensity value between 1 and 254. |  |
 |get_pixel_intensity_3| Input a black pixel. | Returns with an intensity value of 255. |  |
@@ -112,30 +112,30 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
-|parse_veb_1| Call with blank input. | Print usage message to user. |  |
-|parse_veb_2| Call with verbose option. | Print messages to stdout. |  |
-|parse_veb_3| Call with silent option. | stderr |  |
-|parse_veb_4| Call with both silent and verbose options. | stderr and fail |  |
-|parse_opts_1| Call with burn time option set to a positive value. | Completes normally. |  |
-|parse_opts_2| Call with burn time option out of positive range. | Print acceptable range to user. |  |
-|parse_opts_3| Call with burn time option set to a negative value. | Print acceptable range to user. |  |
-|parse_opts_4| Call with dry run option. | Completes normally. |  |
-|parse_opts_5| Call with intensity option set to a positive value. | Completes normally. |  |
-|parse_opts_6| Call with intensity option out of positive range. | Print acceptable range to user. |  |
-|parse_opts_7| Call with intensity option set to a negative value. | Print acceptable range to user. |  |
-|parse_opts_8| Call with output option. | Completes normally. |  |
-|parse_opts_9| Call with port option. | Completes normally. |  |
-|parse_opts_10| Call with black and white option set to a positive value. | Completes normally. |  |
-|parse_opts_11| Call with black and white option out of positive range. | Print acceptable range to user. |  |
-|parse_opts_12| Call with black and white option set to a negative value. | Print acceptable range to user. |  |
-|parse_opts_13| Call with x-offset option set to a positive value. | Completes normally. |  |
-|parse_opts_14| Call with x-offset option out of positive range. | Print acceptable range to user. |  |
-|parse_opts_15| Call with x-offset option set to a negative value. | Print acceptable range to user. |  |
-|parse_opts_16| Call with y-offset option set to a positive value. | Completes normally. |  |
-|parse_opts_17| Call with y-offset option out of positive range. | Print acceptable range to user. |  |
-|parse_opts_18| Call with y-offset option set to a negative value. | Print acceptable range to user. |  |
-|parse_opts_19| Call with verbose option. | Completes normally. |  |
-|parse_opts_20| Call with silent option. | Completes normally. |  |
+|parse_veb_1| Make sure blank input doesn't error. | Call parse_verbose with blank input. | Print interactive shell message to user. | Pass
+|parse_veb_2| Make sure verbose option enables fnotes. | Call parse_verbose with verbose option. | Print messages to stdout. | Pass
+|parse_veb_3| Make sure silent option disables fnotes. | Call parse_verbose with silent option. | Print warning to stderr about silencing notes. | Pass
+|parse_veb_4| Make sure verbose and silent can't be called at the same time. | Call parse_verbose with both silent and verbose options. | Print an error to stderr and exit the program. | Pass
+|parse_opts_1| Make sure burn time is set correctly. | Call parse_opts with burn time option set to a positive value. | Value changed and note printed to user. | Pass
+|parse_opts_2| Make sure burn times greater than 250 are caught. | Call parse_opts with burn time option out of positive range. | Print acceptable range to user and exit. | Pass
+|parse_opts_3| Make sure burn times less than 1 are caught. | Call parse_opts with burn time option set to a negative value. | Print acceptable range to user and exit. | Pass
+|parse_opts_4| Make sure dry run is enabled when used. | Call parse_opts with dry run option. | Prints enabled message. | Pass
+|parse_opts_5| Make sure intensity is set correctly. | Call parse_opts with intensity option set to a positive value. | Value changed and note printed to user. | Pass
+|parse_opts_6| Make sure intensity values greater than 10 are caught. | Call parse_opts with intensity option out of positive range. | Print acceptable range to user and exit. | Pass
+|parse_opts_7| Make sure intensity values less than 1 are caught. | Call parse_opts with intensity option set to a negative value. | Print acceptable range to user and exit. | Pass
+|parse_opts_8| Make sure output file name is set correctly. | Call parse_opts with output option. | Print a note to the user and set outfile. | Pass
+|parse_opts_9| Make sure port is set correctly. | Call parse_opts with port option. | Print a note to the user and set port. | Pass
+|parse_opts_10| Make sure threshold value is set correctly. | Call parse_opts with black and white option set to a positive value. | Print a note to the user and set the threshold value. | Pass
+|parse_opts_11| Make sure threshold values out of range are caught. | Call parse_opts with black and white option out of positive range. | Print acceptable range to user and exit. | Pass
+|parse_opts_12| Make sure threshold values less than 0 are caught. | Call parse_opts with black and white option set to a negative value. | Print acceptable range to user and exit. | Pass
+|parse_opts_13| Make sure x-offset is set correctly. | Call parse_opts with x-offset option set to a positive value. | Print a note to the user and set the x-offset value. | Pass
+|parse_opts_14| Make sure x-offset values greater than 250 are caught. | Call parse_opts with x-offset option out of positive range. | Print acceptable range to user and exit. | Pass
+|parse_opts_15| Make sure x-offset values less than -250 are caught. | Call parse_opts with x-offset option out of negative range. | Print acceptable range to user and exit. | Pass
+|parse_opts_16| Make sure y-offset is set correctly. | Call parse_opts with y-offset option set to a positive value. | Print a note to the user and set the y-offset value. | Pass
+|parse_opts_17| Make sure y-offset values greater than 250 are caught. | Call parse_opts with y-offset option out of positive range. | Print acceptable range to user and exit. | Pass
+|parse_opts_18| Make sure y-offset values less than -250 are caught. | Call parse_opts with y-offset option out of negative range. | Print acceptable range to user and exit. | Pass
+|parse_opts_19| Make sure verbose option is skipped by parse_opts. | Call parse_opts with verbose option. | Nothing is printed. | Pass
+|parse_opts_20| Make sure silent option is skipped by parse_opts. | Call parse_opts with silent option. | Nothing is printed. | Pass
 
 
 #### streamer.c
