@@ -140,25 +140,25 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 #### streamer.c
 
-| ID |Test Case| Action | Expected Output | Actual Output |
-|---:|:-:|:-:|:-:|:-:|
-|stream_1| Call with NULL pixel_state pointer. | ferr |  |
-|send_pixel_command_1| Call with NULL pixel pointer. | fwarn |  |
-|send_pixel_command_2| Call with NULL pixelator_state pointer. | ferr |  |
-|send_pixel_command_3| Call with a good pixel pointer. | Send appropriate instruction to engraver. |  |
-|get_next_pixel_count_1| Call with NULL pixelator_state pointer. | ferr |  |
-|get_next_pixel_count_2| Call with value 0x3d. | Returns 0x3e |  |
-|get_next_pixel_count_3| Call with value 0x78. | Returns 0x3d |  |
-|get_next_pixel_count_4| Call with value out of the range 0x3d - 0x78. | ferr |  |
-|initialize_carver_1| Call with NULL pixelator_state pointer. | ferr |  |
-|initialize_carver_2| Call with valid pixelator_state pointer. | Sends appropriate initialization instructions to the engraver. |  |
-|carve_image_1| Call with NULL pixelator_state pointer. | ferr |  |
-|carve_image_2| Call with NULL pixel pointer. | fwarn |  |
-|finalize_1| Call with NULL pixelator_state pointer. | ferr |  |
-|finalize_2| Call with valid pixeatorl_state pointer. | Sends appropriate final instructions to the engraver. |  |
-|init_serial_1| Call with NULL option set for the port. | Completes normally with default port value. |  |
-|init_serial_2| Call with valid port set for the port option. | Completes normally by opening connection with correct port. |  |
-|init_serial_3| Call with invalid port set for the port option. | ferr |  |
-|send_1| Call with NULL pixelator_state pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|send_2| Call with NULL buffer pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|wait_1| Call with NULL pixelator_state pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
+|ID | Test Case | Action | Expected Output | Actual Output |
+|---: | :-: | :-: | :-: | :-: |
+|stream_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|send_pixel_command_1 | There is no pixel to send | Call with NULL pixel pointer. | Warning message on stderr | Warning message on stderr 
+|send_pixel_command_2 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|send_pixel_command_3 | Normal operation | Call with a good pixel pointer. | Sends carve pixel command to streamer file handle | Sends carve pixel command to streamer file handle 
+|get_next_pixel_count_1| The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|get_next_pixel_count_2| The streamer is sending the first pixel (Normal operation) | Call with value 0x3d. | 0x3e | 0x3e 
+|get_next_pixel_count_3| The streamer needs to reset the count | Call with value 0x78. | 0x3d | 0x3d 
+|get_next_pixel_count_4| Called with an invalid pixel count | Call with value out of the range 0x3d - 0x78. | Error message on stderr | Error message on stderr 
+|initialize_carver_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|initialize_carver_2 | Normal operation | Call with valid pixelator_state pointer. | Sends initialization commands to streamer file handle | Sends initialization commands to streamer file handle
+|carve_image_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|carve_image_2 | There are no pixels to send | Call with NULL pixel pointer. | Warning message on stderr | Warning message on stderr 
+|finalize_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|finalize_2 | Normal operation | Call with valid pixelator_state pointer. | Sends initialization commands to streamer file handle | Sends initialization commands to streamer file handle
+|init_serial_1 | Normal operation, no user supplied port | Call with NULL option set for the port. | Returns MODEMDEVICE filehandle | Returns MODEMDEVICE filehandle 
+|init_serial_2 | Normal operation, user supplied port | Call with valid port set for the port option. | Returns positive integer (filehandle) | Returns positive integer (filehandle) 
+|init_serial_3 | Invalid user supplied port | Call with invalid port set for the port option. | Error message on stderr | Error message on stderr 
+|send_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
+|send_2 | Bad command buffer pointer | Call with NULL buffer pointer. | Error message on stderr | Error message on stderr 
+|wait_1 | The pixelator is not initialized | Call with NULL pixelator_state pointer. | Error message on stderr | Error message on stderr 
