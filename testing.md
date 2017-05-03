@@ -84,28 +84,28 @@ Customer testing will be performed by our customer, Dr. Dietz, if he deems it ne
 
 | ID |Test Case| Action | Expected Output | Actual Output |
 |---:|:-:|:-:|:-:|:-:|
-|center_pixel_1| Call with NULL pixel pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|center_pixel_2| Call with pixel that is too big. | Call pixel_exception function to stop engraving and report error to user. |  |
-|center_pixel_3| Call with a normal pixel. | Function executes normally by adjusting the pixel value appropriately. |  |
-|get_pixel_intensity_1| Input a white pixel. | Returns with an intensity value of 0. |  |
-|get_pixel_intensity_2| Input a grey pixel. | Returns with an appropriate intensity value between 1 and 254. |  |
-|get_pixel_intensity_3| Input a black pixel. | Returns with an intensity value of 255. |  |
-|get_pixel_intensity_4| Input with a NULL pixel pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|pixelator_init_1| Call with NULL wand pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|top_left_1| Call with NULL pixel_state pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|top_left_2| Call with NULL wand pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|top_left_3| Call with an all white image. | Return NULL pixel? |  |
-|top_left_4| Call with normal image. | Returns correct top left pixel in image. |  |
-|bottom_right_1| Call with NULL pixel_state pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|bottom_right_2| Call with NULL wand pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|bottom_right_3| Call with an all white image. | Return NULL pixel? |  |
-|bottom_right_4| Call with normal image. | Returns correct bottom right pixel in image. |  |
-|get_next_1| Call with NULL pixel_state pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|get_next_2| Call with NULL wand pointer. | Call pixel_exception function to stop engraving and report error to user. |  |
-|get_next_3| Call with NULL pixel pointer. | Completes normally by returning the next pixel. |  |
-|get_next_4| Call with NULL iterator. | Completes normally by returning the next pixel. |  |
-|get_next_5| Call with next pixel not being a white pixel. | Completes normally by returning the next pixel. |  |
-|get_next_6| Call with next pixel being a white pixel. | Completes normally by setting pixel and iterator to NULL. |  |
+|center_pixel_1| Call with NULL pixel pointer. | Call `center_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|center_pixel_2| Call with pixel that is too big. | Call `center_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Fail (does not check bounds) |
+|center_pixel_3| Call with a normal pixel. | Call `center_pixel` method. | Function executes normally by adjusting the pixel value appropriately. | Pass |
+|get_pixel_ intensity_1| Input a white pixel. | Call `get_pixel_intensity` method. | Returns with an intensity value of 0. | Fail (antialiasing issue) |
+|get_pixel_ intensity_2| Input a grey pixel. | Call `get_pixel_intensity` method. | Returns with an appropriate intensity value between 1 and 254. | Pass |
+|get_pixel_ intensity_3| Input a black pixel. | Call `get_pixel_intensity` method. | Returns with an intensity value of 255. | Fail (antialiasing issue) |
+|get_pixel_ intensity_4| Input with a NULL pixel pointer. | Call `get_pixel_intensity` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|pixelator_ init_1| Call with NULL wand pointer. | Call `pixelator_init` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|top_left_1| Call with NULL pixel_state pointer. | Call `get_top_left_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|top_left_2| Call with NULL wand pointer. | Call `get_top_left_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|top_left_3| Call with an all white image. | Call `get_top_left_pixel` method. | Returns the bottom right corner. | Pass |
+|top_left_4| Call with normal image. | Call `get_top_left_pixel` method. | Returns correct top left pixel in image. | Pass |
+|bottom_right_1| Call with NULL pixel_state pointer. | Call `get_bottom_right_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|bottom_right_2| Call with NULL wand pointer. | Call `get_bottom_right_pixel` method. | Call pixel_exception function to stop engraving and report error to user. | Pass |
+|bottom_right_3| Call with an all white image. | Call `get_bottom_right_pixel` method. | Returns the top left pixel. | Pass |
+|bottom_right_4| Call with normal image. | Call `get_bottom_right_pixel` method. | Returns correct bottom right pixel in image. | Pass |
+|get_next_1| Call with NULL pixel_state pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. |  |
+|get_next_2| Call with NULL wand pointer. | Call `get_next_pixel` method. | Call pixel_exception function to stop engraving and report error to user. |  |
+|get_next_3| Call with NULL pixel pointer. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
+|get_next_4| Call with NULL iterator. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
+|get_next_5| Call with next pixel not being a white pixel. | Call `get_next_pixel` method. | Completes normally by returning the next pixel. |  |
+|get_next_6| Call with next pixel being a white pixel. | Call `get_next_pixel` method. | Completes normally by setting pixel and iterator to NULL. |  |
 
 
 #### main.c
