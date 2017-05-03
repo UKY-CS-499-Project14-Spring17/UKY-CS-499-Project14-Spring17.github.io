@@ -59,16 +59,16 @@ htpewpew: a CLI for serial communication to a HTPOW laser engraver
 NOTE: If no file is supplied, htpewpew will enter interactive shell mode.
 
  ENGRAVER PARAMETERS:
-  -b, --burn-time=burn       Set maximum burn time (default = ? ms)
+  -b, --burn-time=burn       Set maximum burn time (default = 60 ms)
   -d, --dry-run              Edit image, show engraving area, and quit
-  -i, --intensity=intensity  Set the laser intensity (default = ?)
+  -i, --intensity=intensity  Set the laser intensity (default = 5)
   -o, --output=outfile       Output to OUTFILE instead of to standard output
   -p, --port=port            Location of USB serial port
   -t, --threshold[=threshold], --bw[=threshold]
                              Use a threshold (0-100%) for black and white
                              (default = 50%)
-  -x, --x-offset=x           Automatically offset x location (0-?)
-  -y, --y-offset=y           Automatically offset y location (0-?)
+  -x, --x-offset=x           Automatically offset x location (-250-250)
+  -y, --y-offset=y           Automatically offset y location (-250-250)
 
  INTERFACE PARAMETERS:
   -s, --silent               Supress all standard messages
